@@ -1,0 +1,14 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Environment variables
+.env
+
+# IDE and editor files
+.idea/
+.vscode/
