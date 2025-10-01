@@ -51,10 +51,10 @@ class CanCommentOnTask(permissions.BasePermission):
             user=request.user
 
             is_admin=user.role == 'ADMIN'
-            is_project_manager=task.project.manager==user
-            is_project_developer=user in task.project.developer.all()
+            is_project_manager = task.project.manager == user
+            is_assigned_to_user = task.assigned_to == user
 
-            if is_admin or is_project_manager or is_project_developer:
+            if is_admin or is_project_manager or is_assigned_to_user:
                 return True
             else:
                 return False

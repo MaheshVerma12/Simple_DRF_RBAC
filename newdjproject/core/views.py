@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from rest_framework import viewsets 
 from rest_framework.permissions import IsAuthenticated
-from .models import Project,Task,TaskLog,Notification,Comments
-from .serializers import ProjectSerializer,TaskSerializer,TaskLogSerializer,NotificationSerializer,CommentsSerializer
+from .models import Project,Task,TaskLog,Notification,Comments,User
+from .serializers import ProjectSerializer,TaskSerializer,TaskLogSerializer,NotificationSerializer,CommentsSerializer, UserSerializer
 from .permissions import IsAdmin,IsManagerOrAdmin,IsDeveloperOfProject,CanCommentOnTask
+from rest_framework import generics
 # Create your views here.
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -42,6 +43,10 @@ class CommentsViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user) 
 
 
+class CurrentUserView(generics.RetrieveAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
 
-
+    def get_object(self):
+        return self.request.user
 
