@@ -43,7 +43,7 @@ After starting the server, you can access the API endpoints at `http://127.0.0.1
 *   `/api/tasklogs/`
 *   `/api/notifications/`
 *   `/api/comments/`
-*   `/api/users/`
+*   `/api/user/`
 
 ## Permissions
 
